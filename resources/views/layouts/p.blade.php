@@ -1,5 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel</title>
+ 
+    {!! Html::style('assets/css/bootstrap.css') !!}
+    {!! Html::style('//fonts.googleapis.com/css?family=Roboto:400,300') !!}
+    {!! Html::style("assets/css/bootstrap.css") !!}
+ 
+    <!-- Fonts -->
+    
+ 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+<body>
+    @yield("content")
+
+    <!-- Scripts -->
+    {!! Html::script('assets/js/bootstrap.min.js') !!}
+    {!! Html::script("assets/js/jquery-1.11.1.min.js") !!}
+    {!! Html::script("assets/js/bootstrap.js") !!}
+    </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
@@ -27,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SEL Admin</a>
+                <a class="navbar-brand" href="index.html">Cinema Admin</a>
             </div>
            
 
@@ -53,10 +86,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuario<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="usuario/create"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="/usuario"><i class='fa fa-list-ol fa-fw'></i> Usuarios</a>
+                                    <a href="#"><i class='fa fa-list-ol fa-fw'></i> Usuarios</a>
                                 </li>
                             </ul>
                         </li>

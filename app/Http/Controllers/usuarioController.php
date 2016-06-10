@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\User;
+use Redirect;
+use Session;
 
 class usuarioController extends Controller
 {
@@ -16,7 +21,8 @@ class usuarioController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(2);
+       return view('usuario.index',compact('users'));
     }
 
     /**
@@ -35,9 +41,15 @@ class usuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        //
+       User::create([
+         'name'=> $request['name'],
+         'email'=> $request['email'],
+         'password'=>$request['password'],
+        ]);
+       return redirect('/usuario')->with('message','store');
+         
     }
 
     /**
@@ -59,7 +71,8 @@ class usuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user= User::find($id);
+        return view('usuario.edit',['user'=>$user]);
     }
 
     /**
@@ -69,9 +82,13 @@ class usuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+       $user=User::find($id);
+       $user->fill($request->all());
+       $user->save();
+       Session::flash('message','usuario editado correctamente');
+       return Redirect::to('/usuario');
     }
 
     /**
@@ -82,6 +99,18 @@ class usuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+         Session::flash('message','usuario eliminado correctamente');
+       return Redirect::to('/usuario');
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function crea()
+    {
+       return "hola desde crea";
+    }
+    
 }

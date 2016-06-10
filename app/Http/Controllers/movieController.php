@@ -37,7 +37,7 @@ class movieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //
     }
 
     /**
@@ -83,5 +83,14 @@ class movieController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function crea()
+    {
+       return "hola desde crea";
     }
 }
